@@ -1,0 +1,24 @@
+{
+  "name": "QuickPID",
+  "version": "3.1.7",
+  "description": "A fast PID controller with multiple options. Various Integral anti-windup, Proportional, Derivative and timer control modes.",
+  "keywords": "PID, controller, signal, autotune, tuner, stune",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/Dlloydev/QuickPID"
+  },
+  "authors":
+  [
+    {
+      "name": "David Lloyd",
+      "email": "dlloydev@testcor.ca",
+      "url": "https://github.com/Dlloydev/QuickPID",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Dlloydev/QuickPID",
+  "frameworks": "arduino",
+  "platforms": "*"
+}

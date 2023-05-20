@@ -1,0 +1,22 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "dev": "parcel watch ./index.html --public-url . --dist-dir ../client",
+        "build": "rimraf ../client && parcel build ./index.html --dist-dir ../client --public-url . && rimraf ./.parcel-cache"
+    },
+    "dependencies": {
+        "bootstrap": "^5.2.3",
+        "boxicons": "^2.1.4",
+        "chart.js": "^4.2.1",
+        "chartjs-adapter-moment": "^1.0.1",
+        "moment": "^2.29.4",
+        "parcel": "^2.8.3",
+        "rimraf": "^4.4.1"
+    },
+    "devDependencies": {
+        "@parcel/transformer-sass": "^2.8.3",
+        "@types/bootstrap": "^5.2.6"
+    }
+}

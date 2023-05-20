@@ -1,0 +1,53 @@
+##########################################
+# Syntax Coloring Map For QuickPID Library
+##########################################
+
+##########################################
+# Datatypes (KEYWORD1)
+##########################################
+
+QuickPID	KEYWORD1
+myPID	KEYWORD1
+
+##########################################
+# Methods and Functions (KEYWORD2)
+##########################################
+
+SetMode	KEYWORD2
+Compute	KEYWORD2
+SetOutputLimits	KEYWORD2
+SetTunings	KEYWORD2
+SetControllerDirection	KEYWORD2
+SetSampleTimeUs	KEYWORD2
+SetProportionalMode	KEYWORD2
+SetDerivativeMode	KEYWORD2
+SetAntiWindupMode	KEYWORD2
+GetKp	KEYWORD2
+GetKi	KEYWORD2
+GetKd	KEYWORD2
+GetPterm	KEYWORD2
+GetIterm	KEYWORD2
+GetDterm	KEYWORD2
+GetMode	KEYWORD2
+GetDirection	KEYWORD2
+GetPmode	KEYWORD2
+GetDmode	KEYWORD2
+GetAwMode	KEYWORD2
+
+##########################################
+# Constants (LITERAL1)
+##########################################
+
+automatic	LITERAL1
+manual	LITERAL1
+timer	LITERAL1
+direct	LITERAL1
+reverse	LITERAL1
+pOnError	LITERAL1
+pOnMeas	LITERAL1
+pOnErrorMeas	LITERAL1
+iAwCondition	LITERAL1
+iAwClamp	LITERAL1
+iAwOff	LITERAL1
+dOnError	LITERAL1
+dOnMeas	LITERAL1

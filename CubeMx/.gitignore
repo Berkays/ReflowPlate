@@ -1,0 +1,7 @@
+node_modules
+dist
+out
+.parcel-cache
+
+# MACOSX
+.DS_STORE

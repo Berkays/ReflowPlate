@@ -1,0 +1,20 @@
+{
+    "name": "reflowplategui",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "run": "electron ."
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "cross-spawn": "^7.0.3",
+        "electron": "^23.2.0",
+        "electron-reloader": "^1.2.3"
+    },
+    "devDependencies": {
+        "@types/cross-spawn": "^6.0.2"
+    }
+}

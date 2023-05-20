@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Reflow Plate</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container-fluid d-flex flex-column">
+        <div class="row p-1">
+            <span id="error" class="text-danger"></span>
+        </div>
+        <div class="row flex-grow-1">
+            <div class="col-12">
+                <canvas id="chart"></canvas>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-12 col-sm-12 col-md-4 col-lg-4">
+                <h5>Connection</h5>
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Port</span>
+                    <select id="portSelect" class="form-select" aria-label="Default select example">
+                    </select>
+                    <button class="btn btn-outline-secondary" type="button" id="connectBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path
+                                d="M3 8h2v5c0 2.206 1.794 4 4 4h2v5h2v-5h2c2.206 0 4-1.794 4-4V8h2V6H3v2zm4 0h10v5c0 1.103-.897 2-2 2H9c-1.103 0-2-.897-2-2V8zm0-6h2v3H7zm8 0h2v3h-2z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">JLink Path</span>
+                    <input type="text" class="form-control" id="jlinkPath"
+                        value="/Applications/SEGGER/JLink_V784b/JLinkExe">
+                </div>
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Device</span>
+                    <select id="jlinkDevice" class="form-select" aria-label="Device">
+                        <option selected>STM32F030C8</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4">
+                <h5>Chart</h5>
+                <div class="d-flex flex-row w-100 gap-2 mt-1">
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Min: </span>
+                        <input type="number" class="form-control" id="chartMin" min="10" max="150" step="5" value="25">
+                    </div>
+                    <div class="input-group input-group-sm">
+                        <span class="input-group-text" id="inputGroup-sizing-sm">Max: </span>
+                        <input type="number" class="form-control" id="chartMax" min="80" max="200" step="5" value="170">
+                    </div>
+                </div>
+                <div class="btn-group-vertical d-block mt-2" role="group">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="clearValuesBtn">Clear
+                        Values</button>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                <h5>Profile</h5>
+                <div class="input-group input-group-sm mb-1">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Current</span>
+                    <input type="text" readonly class="form-control" id="profileNameTxt" value="None">
+                </div>
+                <div class="btn-group-vertical d-block mt-2 w-100" role="group">
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="manageProfilesBtn">Manage
+                        Profiles</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-auto border-top border-1 border-dark p-2">
+            <div class="d-flex justify-content-between">
+                <div>
+                    Status:
+                    <span id="statusText" class="text-danger">Disconnected</span>
+                </div>
+                <div>
+                    Sample Count:
+                    <span id="sampleCountText">0</span>
+                </div>
+                <div>
+                    Rubacava
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal" id="profileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Profile Management</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ol class="list-group list-group-numbered">
+                        <a href="#" class="list-group-item list-group-item-action active">
+                            Generic SnPb
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action">Generic SnPi</a>
+                        <a href="#" class="list-group-item list-group-item-action">Relife-304</a>
+                        <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
+                    </ol>
+                    <canvas id="profileChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+
+
+</html>
