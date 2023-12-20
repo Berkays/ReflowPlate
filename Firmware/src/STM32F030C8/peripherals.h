@@ -14,6 +14,7 @@ extern TIM_HandleTypeDef htim1;
 extern TIM_HandleTypeDef htim3;
 extern TIM_HandleTypeDef htim6;
 extern TIM_HandleTypeDef htim15;
+extern UART_HandleTypeDef huart1;
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 #ifdef __cplusplus
@@ -31,4 +32,5 @@ void MX_TIM1_Init(void);
 void MX_TIM3_Init(void);
 void MX_TIM6_Init(void);
 void MX_TIM15_Init(void);
+void MX_USART1_UART_Init(void);
 #endif

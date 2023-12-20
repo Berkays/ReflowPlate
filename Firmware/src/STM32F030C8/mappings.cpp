@@ -13,6 +13,7 @@ unsigned int encoder_channels = encoder_channel_1 | encoder_channel_2;
 TIM_HandleTypeDef *tick_timer = &htim6;
 TIM_HandleTypeDef *i2c_timer = &htim15;
 I2C_HandleTypeDef *i2c = &hi2c2;
+UART_HandleTypeDef *uart = &huart1;
 unsigned int vdiv_channel = ADC_CHANNEL_1;
 unsigned int ntc_1_channel = ADC_CHANNEL_3;
 unsigned int ntc_2_channel = ADC_CHANNEL_2;

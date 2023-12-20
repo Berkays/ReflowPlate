@@ -2,32 +2,45 @@
 
 uint16_t checkSerial(uint16_t commands)
 {
-    if (SEGGER_RTT_HasKey())
+
+#if SERIAL_TYPE == SERIAL_TYPE_RTT
+    if (!SEGGER_RTT_HasKey())
+        return 0;
+
+    byte buffer[32] = {0};
+    SEGGER_RTT_Read(0, buffer, 32);
+#elif SERIAL_TYPE == SERIAL_TYPE_UART
+    byte tempByte = 0;
+    HAL_StatusTypeDef status = HAL_UART_Receive(uart, &tempByte, 1, 50);
+    if (status != HAL_OK)
+        return 0;
+
+    byte buffer[32] = {0};
+    buffer[0] = tempByte;
+    HAL_UART_Receive(uart, &(buffer[1]), 31, 1000);
+#endif
+
+    if (buffer[0] != CODE_START)
+        return 0;
+
+    uint8_t command = buffer[1];
+
+    if ((commands & command) == 0)
+        return 0;
+
+    switch (command)
     {
-        byte buffer[32] = {0};
-        SEGGER_RTT_Read(0, buffer, 32);
-
-        if (buffer[0] != CODE_START)
-            return 0;
-
-        uint8_t command = buffer[1];
-
-        if ((commands & command) == 0)
-            return 0;
-
-        switch (command)
-        {
-        case CODE_HOST_ENTER_PROFILE:
-            sendFlashInfo(GetPageAddress(), ReadProfileCount(), PROFILE_SIZE, PROFILE_FLASH_DATA_SIZE, PROFILE_FLASH_DATA_OFFSET, PROFILE_FLASH_NAME_SIZE);
-            return 1;
-            break;
-        case CODE_HOST_EXIT_PROFILE:
-            return 2;
-            break;
-        default:
-            break;
-        }
+    case CODE_HOST_ENTER_PROFILE:
+        sendFlashInfo(GetPageAddress(), ReadProfileCount(), PROFILE_SIZE, PROFILE_FLASH_DATA_SIZE, PROFILE_FLASH_DATA_OFFSET, PROFILE_FLASH_NAME_SIZE);
+        return 1;
+        break;
+    case CODE_HOST_EXIT_PROFILE:
+        return 2;
+        break;
+    default:
+        break;
     }
+
     return 0;
 }
 
@@ -48,7 +61,11 @@ void sendStatus(uint32_t timeInSec, double temperature, double target, double ou
     copyDoubleToBuffer(ptr, output);
 
     buffer[31] = CODE_END;
+#if SERIAL_TYPE == SERIAL_TYPE_RTT
     SEGGER_RTT_Write(0, buffer, 32);
+#elif SERIAL_TYPE == SERIAL_TYPE_UART
+    HAL_UART_Transmit(uart, buffer, 32, 1000);
+#endif
 }
 
 void sendFlashInfo(uint32_t flashAddress, uint32_t profileCount, uint32_t profileSize, uint32_t profileDataSize, uint32_t profileDataOffset, uint32_t profileNameSize)
@@ -72,7 +89,12 @@ void sendFlashInfo(uint32_t flashAddress, uint32_t profileCount, uint32_t profil
     copyUIntToBuffer(ptr, profileNameSize);
 
     buffer[31] = CODE_END;
+
+#if SERIAL_TYPE == SERIAL_TYPE_RTT
     SEGGER_RTT_Write(0, buffer, 32);
+#elif SERIAL_TYPE == SERIAL_TYPE_UART
+    HAL_UART_Transmit(uart, buffer, 32, 1000);
+#endif
 }
 
 void copyDoubleToBuffer(byte *ptr, double value)

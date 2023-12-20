@@ -37,6 +37,8 @@
 //============================= Features ====================================
 //===========================================================================
 #define SERIAL_COMM ENABLED
+#define SERIAL_TYPE SERIAL_TYPE_UART
+
 #define WAIT_SAFE_TEMP ENABLED
 #define FAN_COOLDOWN DISABLED
 #define PREHEAT ENABLED

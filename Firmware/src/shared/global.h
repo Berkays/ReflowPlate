@@ -21,6 +21,7 @@ extern unsigned int encoder_channel_2;
 extern TIM_HandleTypeDef *tick_timer;
 extern TIM_HandleTypeDef *i2c_timer;
 extern I2C_HandleTypeDef *i2c;
+extern UART_HandleTypeDef *uart;
 extern unsigned int ntc_1_channel;
 extern unsigned int ntc_2_channel;
 extern unsigned int vdiv_channel;

@@ -4,7 +4,10 @@
 #include "hal_driver.h"
 
 #include "Types.h"
+
+#if SERIAL_TYPE == SERIAL_TYPE_RTT
 #include "RTT/SEGGER_RTT.h"
+#endif
 
 #include "global.h"
 #include "eeprom.h"
