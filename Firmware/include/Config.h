@@ -52,7 +52,7 @@
 #define HEATING_ELEMENT_RESISTANCE_PER_DEGREE 0.0085 // °C/Ω
 #define MAX_CURRENT 5.5                              // A
 #define MIN_CURRENT 1.0                              // A
-#define MAX_TEMP 160                                 // °C
+#define MAX_TEMP 200                                 // °C
 #define MIN_TEMP 30                                  // °C
 #define KI 0.1
 #define KP 8
