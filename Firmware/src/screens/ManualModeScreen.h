@@ -26,6 +26,8 @@ public:
         Output = 0;
         Target = 150;
 
+        TOGGLE_STATUS_LED(LOW);
+
         // Read vdiv
         uint32_t adcValue = Read_ADC(vdiv_channel, ADC_SAMPLETIME_239CYCLES_5);
         sourceVoltage = ADC_TO_VOLTAGE_DIVIDER(adcValue, VDIV_R1, VDIV_R2);
@@ -132,6 +134,7 @@ private:
 
     static inline byte heaterTask()
     {
+        TOGGLE_STATUS_LED(LOW);
 
         stopHeater();
         if (Output <= 0.1)
@@ -142,6 +145,7 @@ private:
         if (DutyCycle < minOutputClamp)
             return 0;
 
+        TOGGLE_STATUS_LED(HIGH);
         __HAL_TIM_SET_COMPARE(pwm_timer, pwm_channel, (uint16_t)(DutyCycle));
         HAL_TIM_PWM_Start(pwm_timer, pwm_channel);
 

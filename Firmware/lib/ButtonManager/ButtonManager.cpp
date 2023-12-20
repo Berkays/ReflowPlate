@@ -26,7 +26,7 @@ void ButtonManager::Check()
         {
             Button *btn = ButtonManager::buttons[i];
 
-            if (HAL_GPIO_ReadPin(btn->port, btn->pin) == GPIO_PIN_RESET)
+            if (HAL_GPIO_ReadPin(btn->port, btn->pin) == LOW)
             {
                 // If last pressed button is different
                 if (ButtonManager::lastButtonPressed != btn)

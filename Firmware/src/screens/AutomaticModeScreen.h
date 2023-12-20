@@ -32,6 +32,8 @@ public:
         initialTemperature = 0;
         timerTickCounter = 0;
 
+        TOGGLE_STATUS_LED(LOW);
+
         for (byte i = 0; i < REFLOW_DURATION / AUTOMATIC_MODE_HISTORY_RESOLUTION; i++)
             history[i] = 0;
         historyIndex = 0;
@@ -176,6 +178,8 @@ private:
 
     static inline byte heaterTask()
     {
+        TOGGLE_STATUS_LED(LOW);
+
         if (Output <= 0.1)
         {
             stopHeater();
@@ -186,6 +190,8 @@ private:
 
         if (DutyCycle < minOutputClamp)
             return 0;
+
+        TOGGLE_STATUS_LED(HIGH);
 
         __HAL_TIM_SET_COMPARE(pwm_timer, pwm_channel, (uint16_t)(DutyCycle));
         HAL_TIM_PWM_Start(pwm_timer, pwm_channel);

@@ -20,7 +20,13 @@
 int main(void)
 {
     InitPeripherals();
+
+    TOGGLE_STATUS_LED(HIGH);
+
+    HAL_Delay(500);
     HAL_ADCEx_Calibration_Start(&hadc);
+
+    TOGGLE_STATUS_LED(LOW);
 
 #if USING(INVERT_ENCODER)
     __HAL_TIM_SET_CAPTUREPOLARITY(encoder_timer, encoder_channel_1, TIM_ICPOLARITY_FALLING);

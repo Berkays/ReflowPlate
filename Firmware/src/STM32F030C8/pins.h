@@ -1,3 +1,5 @@
+#define STATUS_LED_Pin GPIO_PIN_14
+#define STATUS_LED_GPIO_Port GPIOC
 #define VDIV_Pin GPIO_PIN_1
 #define VDIV_GPIO_Port GPIOA
 #define NTC2_Pin GPIO_PIN_2

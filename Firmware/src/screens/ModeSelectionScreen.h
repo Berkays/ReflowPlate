@@ -19,6 +19,8 @@ public:
         lastEncoderTick = 0;
         selectedMode = 0;
 
+        TOGGLE_STATUS_LED(LOW);
+
         display->Clear();
         display->ModeSelectScreen(0);
         display->Update();

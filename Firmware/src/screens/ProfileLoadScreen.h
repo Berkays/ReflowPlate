@@ -4,6 +4,7 @@
 #include <ScreenManager.h>
 #include <TaskScheduler.h>
 
+#include "pinUtil.h"
 #include "global.h"
 #include "display.h"
 #include "serial.h"
@@ -20,7 +21,9 @@ public:
         display->Clear();
         display->Update();
 
-        TaskScheduler::ScheduleTask(switchScreenTask, 60000 * 5); // Timeout after 5 minutes
+        TOGGLE_STATUS_LED(HIGH);
+
+        TaskScheduler::ScheduleTask(switchScreenTask, 60000 * 10); // Timeout after 5 minutes
     }
 
     ScreenSignal Update() override

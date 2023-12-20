@@ -6,6 +6,7 @@
 #include "Types.h"
 #include "Macros.h"
 #include "pins.h"
+#include "pinUtil.h"
 #include "peripherals.h"
 
 #endif

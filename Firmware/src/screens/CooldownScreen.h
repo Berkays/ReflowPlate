@@ -4,6 +4,7 @@
 #include <ScreenManager.h>
 #include <TaskScheduler.h>
 
+#include "pinUtil.h"
 #include "global.h"
 #include "display.h"
 
@@ -23,7 +24,7 @@ public:
         display->CoolDownScreen(Temperature, 1);
         display->Update();
 
-        HAL_GPIO_WritePin(Fan_Port, Fan_Pin, GPIO_PIN_SET);
+        TOGGLE_FAN(HIGH);
 
         TaskScheduler::SchedulePeriodicTask(cooldownTask, 2000, 1000);
 #else
@@ -32,6 +33,8 @@ public:
         display->Update();
 
         HAL_Delay(2500);
+
+        TOGGLE_STATUS_LED(HIGH);
 
         ScreenManager::Switch(ScreenId::ModeSelect);
 #endif
@@ -57,7 +60,8 @@ private:
         {
             TaskScheduler::RemoveAll();
 
-            HAL_GPIO_WritePin(Fan_Port, Fan_Pin, GPIO_PIN_RESET);
+            TOGGLE_FAN(LOW);
+            TOGGLE_STATUS_LED(LOW);
             ScreenManager::Switch(ScreenId::ModeSelect);
         }
 
