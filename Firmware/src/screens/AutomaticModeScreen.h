@@ -20,7 +20,7 @@ public:
 
     void Setup() override
     {
-        sourceVoltage = 12.0;
+        sourceVoltage = INPUT_VOLTAGE;
         Output = 0;
         Time = 0;
         Target = 0;
@@ -75,7 +75,7 @@ public:
     }
 
 private:
-    static inline double sourceVoltage = 12.0;
+    static inline double sourceVoltage = INPUT_VOLTAGE;
     static inline uint16_t minOutputClamp = 0xffff;
     static inline uint16_t maxOutputClamp = 0xffff;
 

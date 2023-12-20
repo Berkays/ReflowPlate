@@ -10,11 +10,12 @@
 #define ADC_RESOLUTION 12
 #define ADC_MAX ((2 << (ADC_RESOLUTION - 1)) - 1)
 #define ADC_CORRECTION 1.0475
-#define OPERATING_VOLTAGE 3.3    // V
-#define VDIV_R1 390.0            // Ω
-#define VDIV_R2 100.0            // Ω
-#define MIN_ALLOWED_VOLTAGE 11.0 // V
-#define MAX_ALLOWED_VOLTAGE 13.0 // V
+#define OPERATING_VOLTAGE 3.3                     // V
+#define VDIV_R1 390.0                             // Ω
+#define VDIV_R2 100.0                             // Ω
+#define INPUT_VOLTAGE 12.0                        // V
+#define MIN_ALLOWED_VOLTAGE (INPUT_VOLTAGE - 1.0) // V
+#define MAX_ALLOWED_VOLTAGE (INPUT_VOLTAGE + 1.0) // V
 
 #define INVERT_SCREEN DISABLED
 

@@ -21,7 +21,7 @@ public:
 
     void Setup() override
     {
-        sourceVoltage = 12.0;
+        sourceVoltage = INPUT_VOLTAGE;
         lastEncoderTick = 0;
         Output = 0;
         Target = 150;
@@ -62,7 +62,7 @@ public:
 
 private:
     uint32_t lastEncoderTick = 0;
-    static inline double sourceVoltage = 12.0;
+    static inline double sourceVoltage = INPUT_VOLTAGE;
     static inline uint16_t minOutputClamp = 0xffff;
     static inline uint16_t maxOutputClamp = 0xffff;
 
